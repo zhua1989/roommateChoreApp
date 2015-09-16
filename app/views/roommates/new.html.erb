@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New User Signup</title>
+</head>
+<body>
+Hello World
+
+  <div class="container-fluid">
+   <div class="row">
+     <div class="col-xs-10 col-xs-offset-1 col-sm-4"> 
+           <div class="new">
+             <h2>Create an account</h2> <br>
+               <%= form_for (@roommate), url: roommate_path do |f| %>
+                       <% if @roommate.errors.any? %> 
+                                   <% @roommate.errors.full_messages.each do |msg| %>
+                                   <h5> <%= msg %></h5>
+                               <% end %> 
+                       <% end %> 
+                  
+                         <%= f.label :first_name%>
+                         <div class="text-field">
+                        <p> <%= f.text_field :first_name%> </p>
+                         <%= f.label :last_name%>
+                        <p> <%= f.text_field :last_name%> </p>
+                         <%= f.label :email%>
+                        <p> <%= f.password_field :email%> </p>
+                         <p id="login"> <%=f.submit%> </p>
+                         </div>
+               <% end %>
+           </div> 
+       </div>
+     </div>
+   </div>
+</body>
+</html>

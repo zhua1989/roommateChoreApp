@@ -1,0 +1,6 @@
+class ChoresController < ApplicationController
+
+
+
+
+end

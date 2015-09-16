@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TaskMate</title>
+
+    </style>
+</head>
+<body>
+<div id="container">
+
+<div>
+  <div class="login">
+      <h2>Login</h2> <br>
+                   <%= form_tag "/sessions" do %>
+                   <p> Enter your email: </p>
+                   <div class="text-field">
+                     <h6> <%= text_field_tag :email %> </h6><br>
+                   </div>
+                   <p> Enter PW: </p>
+                   <div class="text-field">
+                     <h6> <%= password_field_tag :password %> </h6><br>
+                   </div>
+                    <p id="log"> <%= submit_tag "log in" %> </p>
+                    <% end %>
+  </div> 
+
+  <div>
+  <a href="/roommate/new">Don't have an account? Create One Here</a>
+  </div>
+</div>
+
+
+
+
+
+
+</div>
+</body>
+</html>
