@@ -10,6 +10,38 @@
 </head>
 <body>
 
+<ul id="chore-list">
+</ul>
+<script type="text/template" id="my-chores">
+<h1>My Chores</h1>
+<li>TaskName: <%%= task_name %> </li>
+<li>Completed: <%%= completed %> </li>
+<button class="destroy">Complete this Task</button>
+
+</script>
+
+
+<script type="text/template" id="other-chores">
+
+</script>
+
+
+<% if session[:roommate_id] %>
+
+
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+       <div class="margin-right">
+        <div>
+          <%=link_to("My Chores", roommate_path(session[:roommate_id]), :class => "profile") %>
+          <%=link_to("Log Out", "/sessions", method: :delete) %>
+        </div>
+      </div> 
+    </div>
+  </nav>
+  <% end %>
+
 <%= yield %>
 
 </body>

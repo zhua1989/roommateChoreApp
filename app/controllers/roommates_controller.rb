@@ -10,7 +10,7 @@ def create
        @roommate = Roommate.create(roommate_params)
     if @user.errors.any?
     #   ## if the username is present, then redirect to the login page
-      render template: "//new"
+      render template: "/new"
     else 
       ## If the username is not present, then it creates their account
        roommate = Roommate.find_by({email: params[:roommate][:email]})
@@ -23,7 +23,7 @@ end
 
 
 def show
-
+  render :show
 end
 
 

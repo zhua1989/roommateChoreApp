@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 
     #logged in means a user_id is stored in a session
   end
+  
   def destroy
     session[:roommate_id] = nil
     redirect_to root_path
