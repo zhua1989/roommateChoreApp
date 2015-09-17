@@ -1,4 +1,4 @@
-class Api::V1::DebtsController < ApplicationController
+class Api::V1::ChoresController < ApplicationController
 
   def index
     @chores = Chore.all
@@ -18,7 +18,7 @@ class Api::V1::DebtsController < ApplicationController
   def update
     @chore = Chore.find(params[:id])
     @chore.update(chore_params)
-    render json: @debt
+    render json: @chore
   end
 
   def destroy

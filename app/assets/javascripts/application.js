@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+
+
+//= require underscore
+//= require backbone
+
+//= require  app
+//= require ./Backbone/Models/Chore
+//= require ./Backbone/Collections/choreCollection
+//= require ./Backbone/Views/Chores/choreModelView  
+//= require ./Backbone/Views/Chores/choreCollectionView
