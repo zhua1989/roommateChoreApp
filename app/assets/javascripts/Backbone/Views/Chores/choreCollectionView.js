@@ -2,25 +2,29 @@ var ChoreApp = ChoreApp || {models: {}, collections: {}, views: {}}
 
  ChoreApp.views.ChoreListView = Backbone.View.extend({
     initialize: function(){
-    this.listenTo(this.collection, 'add', this.render);
-    this.listenTo(this.collection, "change", this.logChange);
     this.collection.fetch();
+    this.listenTo(this.collection, 'add', this.addOne);
+    this.listenTo(this.collection, "change", this.logChange);
+    console.log(this.collection.models)
     },
 
-    el: $("#chore-list"),
+    // el: $("#chore-list"),
 
-    logChange: function(arg1, arg2){
-      console.log(arg1,arg2)
+    addOne: function(chore) {
+      console.log('Make it rain!');
+      var choreView = new ChoreApp.views.ChoreView({model: chore});
+      this.$el.append(choreView.render().el);
+      $("#chore-list").append(this.$el)
+      
     },
 
-    render: function(model,collection){
+    render: function(){
+      var _this = this;
       console.log(ChoreApp.views)
-      var self = this;
-      this.$el.empty();
       _.each(this.collection.models, function(chore){
-        console.log(chore);
         var choreView = new ChoreApp.views.ChoreView({model:chore});
-        self.$el.append( choreView.render().el );
-      })
+        _this.$el.append(choreView.render().template(chore.attributes));
+        // $("#chore-list").append(this.$el)
+      }.bind(this))
     }
 })

@@ -4,11 +4,20 @@
     <title>Chores</title>
 </head>
 <body>
-hello
+
 
 
 <div>
 <a href="#/other_chores">See Other Chores Available</a>
+
+<form id="new-chore-form">
+    <label for="task_name">Task Name:</label>
+    <input id="task_name" type="text" name="task_name">
+    <label for="assignee">Assignee:</label>
+    <input type="text" id="assignee" name="assignee" value="<%%=@roommate.first_name%>">
+    <input id="completed" type="hidden" name="completed" value="false">
+    <button type="submit">Create Chore</button>
+  </form>
 </div>
 </body>
 </html>

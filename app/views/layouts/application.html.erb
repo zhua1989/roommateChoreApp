@@ -6,27 +6,15 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <style>
+  .toggle {
 
+  }
+  </style>
 </head>
 <body>
-
-<ul id="chore-list">
-</ul>
-<script type="text/template" id="my-chores">
-<h1>My Chores</h1>
-<li>TaskName: <%%= task_name %> </li>
-<li>Completed: <%%= completed %> </li>
-<button class="destroy">Complete this Task</button>
-
-</script>
-
-
-<script type="text/template" id="other-chores">
-
-</script>
-
-
 <% if session[:roommate_id] %>
+<h1>My Chores</h1>
 
 
 
@@ -35,12 +23,64 @@
        <div class="margin-right">
         <div>
           <%=link_to("My Chores", roommate_path(session[:roommate_id]), :class => "profile") %>
+          <%=link_to("Edit Profile Info", edit_roommate_path(session[:roommate_id]) :class => "edit-profile-button") %>
           <%=link_to("Log Out", "/sessions", method: :delete) %>
         </div>
       </div> 
     </div>
   </nav>
+    <ul id="chore-list">
+    </ul>
+    <script type="text/template" id="my-chores">
+    <li>TaskName: <%%= task_name %> </li>
+    <li>Completed: <%%= completed %> </li>
+    <li>Assignee: <%%= assignee %> </li>
+    <button data-action='destroy'>
+        Delete
+    </button>
+    <button data-action="edit">
+        Edit
+    </button>    
+    </script>
+
+
+    <buttton class="add-chore">Add Chore to This Apartment</buttton>
+
+    <script type="text/template" id="new-chore">
+
+    </script>
+
+    <script type="text/template" id="edit-form" class="toggle">
+    <BR><BR>
+    Task Name:
+    <input type="text" id="task_name">
+    Assignee:
+    <input type="text" id="assignee">
+    <button class="update">Update Chore</button>
+    </script>
+
+    <script type="text/template" id="new-chore-form">
+    <BR><BR>
+    <form id="entry-form">
+    Add a Chore!
+    Task Name:
+    <input type="text" id="author" name="task_name">
+    
+    <input type="text" id="title">
+    Content
+    <input type="text" id="content">
+
+    <button id="add-button"> add </button>
+    </script>
   <% end %>
+
+
+
+<script type="text/template" id="other-chores">
+
+</script>
+
+
 
 <%= yield %>
 

@@ -8,3 +8,6 @@ ChoreApp.collections.choreCollection = Backbone.Collection.extend({
     }
 })
 
+
+
+

@@ -4,12 +4,12 @@ var ChoreApp = ChoreApp || {
     views: {}
 }
 
-ChoreApp.models.Chore = Backbone.Model.extend({
+ChoreApp.models.Roommate = Backbone.Model.extend({
     initialize: function() {
         console.log("made a chore here at Chore.js")
     },
 
-    urlRoot: "/api/v1/chores",
+    urlRoot: "/api/v1/roommates",
 
     sayGoodBye: function() {
         console.log("This is the model speaking. say goodbye has been fired!");
