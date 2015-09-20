@@ -22,3 +22,4 @@
 //= require ./Backbone/Collections/choreCollection
 //= require ./Backbone/Views/Chores/choreModelView  
 //= require ./Backbone/Views/Chores/choreCollectionView
+//= require ./Backbone/Views/Chores/newFormView

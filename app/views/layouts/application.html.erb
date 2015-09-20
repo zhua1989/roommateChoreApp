@@ -23,7 +23,6 @@
        <div class="margin-right">
         <div>
           <%=link_to("My Chores", roommate_path(session[:roommate_id]), :class => "profile") %>
-          <%=link_to("Edit Profile Info", edit_roommate_path(session[:roommate_id]) :class => "edit-profile-button") %>
           <%=link_to("Log Out", "/sessions", method: :delete) %>
         </div>
       </div> 
@@ -44,7 +43,7 @@
     </script>
 
 
-    <buttton class="add-chore">Add Chore to This Apartment</buttton>
+    <button class="add-chore">Add Chore to This Apartment</button>
 
     <script type="text/template" id="new-chore">
 
@@ -59,19 +58,20 @@
     <button class="update">Update Chore</button>
     </script>
 
-    <script type="text/template" id="new-chore-form">
+    <div id="new-form-div">
+    </div>
     <BR><BR>
     <form id="entry-form">
     Add a Chore!
     Task Name:
-    <input type="text" id="author" name="task_name">
-    
-    <input type="text" id="title">
-    Content
-    <input type="text" id="content">
+    <input type="text" id="task_name" name="task_name">
+    Assignee:
+    <input type="text" id="assignee" name="assignee">
+    <input type="hidden" id="roommate_id" name="roommate_id" value=""
+    <button id="add-button"> Add Chore </button>
 
-    <button id="add-button"> add </button>
-    </script>
+
+
   <% end %>
 
 

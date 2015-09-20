@@ -12,8 +12,8 @@ ChoreApp.views.ChoreView = Backbone.View.extend({
     events: {
      'click [data-action="destroy"]': "handleDestroy",
       'click [data-action="edit"]' : "handleEdit",
+      'click .add-chore' : "handleNewForm",
       'click .update' : "handleUpdate",
-      'click .add-chore' : "handleNewForm"
     },
 
     render: function(){
@@ -22,13 +22,16 @@ ChoreApp.views.ChoreView = Backbone.View.extend({
       return this
     },
 
+    // handleNewForm: function(){
+    //   console.log("is this firing?")
+    //   console.log($("#new-chore-form"))
+    //   $("#new-form-div").append($("#new-chore-form").text())
+    // },
+
     handleEdit: function(){
       this.$el.append($("#edit-form").text())
     },
 
-    handleNewForm: function(){
-      this.$el.append($("#new-chore-form")text())
-    },
 
     handleDestroy: function(e){
       e.preventDefault();

@@ -11,6 +11,8 @@ var choreListView = new ChoreApp.views.ChoreListView ({
   collection: choreCollection,
   // el: $('#chore-list')
 })
+var myFormView = new ChoreApp.views.FormView({el: $("#entry-form"), collection: choreCollection});
+
 console.log(":LSKDJF:DSLKJF")
 }
 
