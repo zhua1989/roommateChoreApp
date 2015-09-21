@@ -32,6 +32,8 @@ gem 'httparty'
 
 gem 'rails_serve_static_assets'
 
+gem 'rails_12factor'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
