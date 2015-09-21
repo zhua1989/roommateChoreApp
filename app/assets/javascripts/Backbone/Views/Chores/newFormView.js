@@ -16,7 +16,7 @@ ChoreApp.views.FormView = Backbone.View.extend({
     var choreName = $("#task_name").val()
     var assignee = $("#assignee").val()
     var roommateIdOfChore = $("#roommate_id").val()
-    var chore = new Chore({
+    var chore = new ChoreApp.models.Chore({
       task_name: choreName,
       completed: false,
       assignee: assignee,

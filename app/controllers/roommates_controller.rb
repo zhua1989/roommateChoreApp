@@ -1,3 +1,7 @@
+
+require 'httparty'
+require 'pry'
+
 class RoommatesController < ApplicationController
 
 def new
@@ -8,17 +12,20 @@ def create
 
     ## check if the username is already in the database
        @roommate = Roommate.create(roommate_params)
+       if @roommate 
+        UserMailer.welcome_email(@roommate).deliver_now
     if @roommate.errors.any?
     #   ## if the username is present, then redirect to the login page
-      render template: "/roommates/new"
+        render template: "/roommates/new"
     else 
       ## If the username is not present, then it creates their account
+        binding.pry
        roommate = Roommate.find_by({email: params[:roommate][:email]})
     ## Start the session for the user
        session[:roommate_id] = roommate.id
-       redirect_to roommate_path(roommate) 
+       redirect_to roommate_path
      end
-  
+  end
 end
 
 # def create
@@ -40,32 +47,43 @@ end
 
 
 def show
+  # if session[:roommate_id] == nil
+  #   redirect_to root_path
+
+  # elsif logged_in? && check_current_user?
+  #     actual_user = Roommate.find(session[:roommate_id])
+
+
+
+  ENV["wunderground_key"]
+  
+  geo_request = HTTParty.get('http://ipinfo.io/geo/')
+  puts geo_request
+  apiURL = "http://api.wunderground.com/api/" + ENV["wunderground_key"] + "/forecast/q/autoip.json?geo_ip=" + geo_request['ip'] + ".json"
+  puts apiURL  
+
+
+  weather_request = HTTParty.get(apiURL)
+  @date = weather_request["forecast"]["txt_forecast"]["date"]
+  @morning_forecast = weather_request["forecast"]["txt_forecast"]["forecastday"][0]["fcttext"]
+  @night_forecast = weather_request["forecast"]["txt_forecast"]["forecastday"][1]["fcttext"]
+  @iconURL = weather_request["forecast"]["txt_forecast"]["forecastday"][0]["icon_url"]
+  @night_icon = weather_request["forecast"]["txt_forecast"]["forecastday"][1]["icon_url"]
+  puts @morning_forecast
+  puts @iconURL
+
   @roommate = Roommate.find(session[:roommate_id])
   puts @roommate.id
   puts "LSDKFJ:SLDKFJS:DLFKJ"
-  render :show
 end
-# def show
-#   ##Check to see if there is a session.  If not logged in don't let person go to User Paths
-#   if session[:roommate_id] == nil
-#     redirect_to root_path
-#   ##Checkt to see if logged in if logged in eventually redirect to the user show page
-#   else logged_in? && check_current_user?
-#   actual_user = Roommate.find(session[:roommate_id])
-#       @current_roommate = Roommate.find(session[:roommate_id])
-#       @chores = @current_roommate.chores
-#       # @tastings = @current_user.tastings
-#       redirect_to roommate_path(session[:roommate_id])
-#       puts("HELLO CAT")
-  
-#     end
 # end
+
 
 private
 
 
 def roommate_params
-  params.permit(:first_name, :last_name, :email, :password, :apartment_id)
+  params.require(:roommate).permit(:first_name, :last_name, :email, :password, :apartment_id)
 end
 
 

@@ -17,9 +17,6 @@
 </head>
 <body>
 <% if session[:roommate_id] %>
-<h1>My Chores</h1>
-
-
 
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="ui centered grid">
@@ -31,6 +28,12 @@
       </div> 
     </div>
   </nav>
+    <div class="weather">
+    <img src="<%=@iconURL%>">  <img src="<%=@night_icon%>">
+    <h1>Hello <%=@roommate.first_name%> The time is <%=@date%></h1>
+    <p> Today's Forecast is <%=@morning_forecast%> For tonight   <%=@night_forecast%> </p>
+    </div>
+    <BR>
     <ul id="chore-list" class="card">
     </ul>
     <script type="text/template" id="my-chores">
@@ -44,8 +47,6 @@
         Edit
     </button>    
     </script>
-
-
 
     <script type="text/template" id="new-chore">
 

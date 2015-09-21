@@ -23,6 +23,7 @@ class Api::V1::RoommatesController < ApplicationController
 
   def destroy
     @roommate = Roommate.find(params[:id])
+    @roommate.destroy()
     render json: 'delete'
   end
 
