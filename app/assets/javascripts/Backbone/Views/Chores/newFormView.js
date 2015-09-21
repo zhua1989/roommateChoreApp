@@ -15,13 +15,15 @@ ChoreApp.views.FormView = Backbone.View.extend({
     event.preventDefault();
     var choreName = $("#task_name").val()
     var assignee = $("#assignee").val()
+    var roommateIdOfChore = $("#roommate_id").val()
     var chore = new Chore({
       task_name: choreName,
       completed: false,
       assignee: assignee,
-      
+      assigned: true,
+      roommate_id: roommateIdOfChore
     });
-    this.collection.create(contact);
+    this.collection.create(chore);
     console.log(this.collection.models)
   }
 })

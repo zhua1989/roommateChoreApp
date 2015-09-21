@@ -2,8 +2,8 @@ var ChoreApp = ChoreApp || {models: {}, collections: {}, views: {}}
 
 ChoreApp.views.ChoreView = Backbone.View.extend({
     initialize: function(){
-      this.listenTo(this.model, "change", this.render);
-      this.listenTo(this.model, "sync destroy", this.remove);
+      this.listenTo(this.model, "sync", this.render);
+      this.listenTo(this.model, "destroy", this.remove);
       this.template = _.template($('#my-chores').html());
     },
     model: ChoreApp.models.Chore,
@@ -35,8 +35,8 @@ ChoreApp.views.ChoreView = Backbone.View.extend({
 
     handleDestroy: function(e){
       e.preventDefault();
-      this.model.destroy();
       this.model.sayGoodBye();
+      this.model.destroy();
       console.log("Delete please")
     },
 

@@ -4,7 +4,6 @@
     <title>New User Signup</title>
 </head>
 <body>
-Hello World
 
   <div class="container-fluid">
    <div class="row">
@@ -24,7 +23,10 @@ Hello World
                          <%= f.label :last_name%>
                         <p> <%= f.text_field :last_name%> </p>
                          <%= f.label :email%>
-                        <p> <%= f.password_field :email%> </p>
+                        <p> <%= f.text_field :email%> </p>
+                          <%= f.label :password%>
+                        <p> <%= f.password_field :password%></p>
+                        <%= hidden_field_tag(:roommate_id, "1") %>
                          <p id="login"> <%=f.submit%> </p>
                          </div>
                <% end %>

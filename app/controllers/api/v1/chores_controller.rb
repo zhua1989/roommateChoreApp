@@ -23,6 +23,7 @@ class Api::V1::ChoresController < ApplicationController
 
   def destroy
     @chore = Chore.find(params[:id])
+    @chore.destroy
     render json: 'delete'
   end
 
