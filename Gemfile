@@ -30,6 +30,8 @@ gem 'pry-rails'
 
 gem 'httparty'
 
+gem 'rails_serve_static_assets'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
