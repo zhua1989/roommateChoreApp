@@ -51,6 +51,8 @@ def show
   # elsif logged_in? && check_current_user?
   #     actual_user = Roommate.find(session[:roommate_id])
 
+  @time = Time.now
+  @full_time_month = @time.utc
 
 
   ENV["wunderground_key"]

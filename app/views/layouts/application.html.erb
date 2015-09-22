@@ -8,46 +8,109 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.3/semantic.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.3/components/grid.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.3/components/card.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
   <style>
-  .toggle {
-
+  .card{
+    padding: 4px;
+    margin: 2px;
+    font: black;
   }
+  .weather{
+    text-align: left;
+  }
+  li{
+    color: black;
+  }
+  h1{
+    text-align: center;
+  }
+
+  #chores{
+    background: url("http://orig11.deviantart.net/c6f5/f/2009/194/f/6/hi_res_lined_paper_texture_by_merileekitty.jpg");
+    opacity: .6;
+  }
+
+  .splash-container {
+    z-index: 1;
+    overflow-x: scroll;
+    width: -webkit-fit-content;
+    overflow-y: scroll;
+    width: 105%;
+    height: 45%;
+    top: 2em;
+    left: 0;
+    position: relative !important;
+    z-index: 1;
+}
+
+.home-menu .pure-menu-heading {
+    color: white;
+    font-weight: 400;
+    font-size: 80%;
+}
   </style>
 </head>
+
+
+
 <body>
 <% if session[:roommate_id] && @roommate %>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="ui centered grid">
        <div class="margin-right">
-        <div>
+        
+
+        <div class="splash-container">
+          <section class='pure-menu-horizontal'>
+            
+
           <%=link_to("My Chores", roommate_path(session[:roommate_id]), :class => "button button-primary") %>
           <%=link_to("Log Out", "/sessions", :class => "button button-primary", method: :delete) %>
+            
+          </section>
+          </div>
         </div>
       </div> 
-    </div>
-  </nav>
+    </div><BR><BR>
+
+    <h1>Welcome <%=@roommate.first_name%></h1>
+
     <div class="weather">
     <img src="<%=@iconURL%>">  <img src="<%=@night_icon%>">
-    <h1>Hello <%=@roommate.first_name%> The time is <%=@date%></h1>
-    <p> Today's Forecast is <%=@morning_forecast%> For tonight   <%=@night_forecast%> </p>
+    <h5>The time and day is <%=@full_time_month%></h5>
+    <p> Today's Forecast is <%=@morning_forecast%><BR><BR> For tonight   <%=@night_forecast%> </p>
     </div>
+        
+
+        <div class="ui segment">
+
+        <section id="chores" class="ui eight cards">
+
+
     <BR>
-    <ul id="chore-list" class="card">
-    </ul>
+    <div id="chore-list">
+    </div>
     <script type="text/template" id="my-chores">
+
+    <div class="card">
     <li>TaskName: <%%= task_name %> </li>
     <li>Completed: <%%= completed %> </li>
     <li>Assignee: <%%= assignee %> </li>
+
+    <div class="">
     <button data-action='destroy'>
-        Delete
+        Complete This Task
     </button>
+    </div>
+
+    <div class="">
     <button data-action="edit">
         Edit
     </button>    
+    </div>
     </script>
 
     <script type="text/template" id="new-chore">
@@ -62,6 +125,9 @@
     <input type="text" id="assignee">
     <button class="update">Update Chore</button>
     </script>
+    </div>
+    </div>
+
 
     <div id="new-form-div">
     </div>
@@ -74,16 +140,15 @@
     <input type="text" id="assignee" name="assignee" value="<%=@roommate.first_name%>">
     <input type="hidden" id="roommate_id" name="roommate_id" value="<%=@roommate.id%>">
     <button id="add-button"> Add Chore </button>
+    </form>
 
 
+</BR>
+</section>
 
   <% end %>
 
 
-
-<script type="text/template" id="other-chores">
-
-</script>
 
 
 
