@@ -5,39 +5,50 @@
     <script type="text/javascript"></script>
     <style>
     body {
-      background-image: url("http://ringvemedia.com/server//bg.jpg");
-      display: Cover;
-    }
-/*    html { 
-      background: url(images/bg.jpg) no-repeat center center fixed; 
+      background-image: url("http://i.imgur.com/dVpup5i.jpg");
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-    }*/
+    }
+
+    #login-modal {
+      text-align: center;
+      background-color: #FAF0E6;
+      margin: 10%;
+      opacity: .7;
+    }
+
+    .bt{
+      color: black;
+      opacity: .9
+    }
+    h6{
+      font-size: 20px;
+    }
+
     </style>
 </head>
 <body>
 <div id="container">
 
-<div>
+<div id="login-modal">
   <div class="login">
-      <h2>Login</h2> <br>
                    <%= form_tag "/sessions" do %>
-                   <p> Enter your email: </p>
+                   <h6> Email: </h6>
                    <div class="text-field">
                      <h6> <%= text_field_tag :email %> </h6><br>
                    </div>
-                   <p> Enter PW: </p>
+                   <h6> Enter Password: </h6>
                    <div class="text-field">
                      <h6> <%= password_field_tag :password %> </h6><br>
                    </div>
-                    <p id="log"> <%= submit_tag "log in" %> </p>
+                   <%= submit_tag "log in", :class => 'submit'%> 
                     <% end %>
   </div> 
 
   <div>
-  <a href="/roommate/new">Don't have an account? Create One Here</a>
+  <a class="button primary bt" href="/roommate/new">Don't have an account? Create One Here</a>
   </div>
 </div>
 

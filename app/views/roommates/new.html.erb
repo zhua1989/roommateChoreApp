@@ -2,14 +2,30 @@
 <html>
 <head>
     <title>New User Signup</title>
+    <style>
+    .pure-form {
+      margin: 10%;
+    }
+    .submit{
+      color: red;
+      border-spacing: 40px;
+    }
+
+    body {
+      background-image: url("http://farmersdaughterconsulting.com/blog/wp-content/uploads/2015/04/Sink.jpg");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    </style>
 </head>
 <body>
 
   <div class="container-fluid">
-   <div class="row">
-     <div class="col-xs-10 col-xs-offset-1 col-sm-4"> 
+   <div>
+     <div> 
            <div class="new">
-             <h2>Create an account</h2> <br>
                <%= form_for (@roommate), url: roommate_path do |f| %>
                        <% if @roommate.errors.any? %> 
                                    <% @roommate.errors.full_messages.each do |msg| %>
@@ -17,17 +33,33 @@
                                <% end %> 
                        <% end %> 
                   
-                         <%= f.label :first_name%>
-                         <div class="text-field">
-                        <p> <%= f.text_field :first_name%> </p>
+                         <div class="pure-form pure-form-stacked">
+                         <div class="pure-g">
+                        <h4>Create an account</h4> <br>
+
+                         <div class="pure-u-1 pure-u-md-1-3">
+                         <%= f.label :first_name %>
+                         <p> <%= f.text_field :first_name %></p>
+                         </div>
+
+                         <div class="pure-u-1 pure-u-md-1-3">
                          <%= f.label :last_name%>
                         <p> <%= f.text_field :last_name%> </p>
+                        </div>
+
+                        <div class="pure-u-1 pure-u-md-1-3">
                          <%= f.label :email%>
                         <p> <%= f.text_field :email%> </p>
+                        </div>
+
+                        <div class="pure-u-1 pure-u-md-1-3">
                           <%= f.label :password%>
                         <p> <%= f.password_field :password%></p>
+                        </div>
                         <%= f.hidden_field(:apartment_id, :value => "1") %>
-                         <p id="login"> <%=f.submit%> </p>
+
+                        <%=f.submit :class => 'submit'%>
+                         </div>
                          </div>
                <% end %>
            </div> 

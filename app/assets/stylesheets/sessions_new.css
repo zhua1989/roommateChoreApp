@@ -1,0 +1,19 @@
+    body {
+      background-image: url("http://i.imgur.com/dVpup5i.jpg");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    #login-modal {
+      text-align: center;
+      background-color: #FAF0E6;
+      margin: 10%;
+      opacity: .5;
+    }
+
+    .bt{
+      color: black;
+      opacity: .9
+    }
